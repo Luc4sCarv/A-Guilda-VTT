@@ -1,0 +1,28 @@
+[package]
+name = "tormenta20-vtt"
+version = "0.0.1"
+edition = "2024"
+
+[lib]
+name = "tormenta20_vtt_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = [] }
+tormenta20-core = { path = "crates/core" }
+axum = { version = "0.8", features = ["ws"] }
+futures-util = "0.3"
+getrandom = "0.3"
+image = { version = "0.25", default-features = false, features = ["jpeg", "png", "webp"] }
+rusqlite = { version = "0.32", features = ["bundled"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+tauri-plugin-dialog = "2"
+tokio = { version = "1", features = ["net", "sync"] }
+uuid = { version = "1", features = ["v4"] }
+
+[dev-dependencies]
+tokio-tungstenite = "0.29"

@@ -1,0 +1,13 @@
+node_modules/
+dist/
+target/
+target-next/
+tmp/
+.impeccable/
+RPG_Livros/
+.env
+.env.*
+*.db
+*.sqlite
+*.sqlite3
+*.log

@@ -1,0 +1,200 @@
+@font-face{font-family:"Cinzel Decorative";src:url('/fonts/CinzelDecorative-Regular.ttf') format('truetype');font-weight:400;font-display:swap}
+@font-face{font-family:"Cinzel Decorative";src:url('/fonts/CinzelDecorative-Bold.ttf') format('truetype');font-weight:700;font-display:swap}
+@font-face{font-family:Alegreya;src:url('/fonts/Alegreya-Variable.ttf') format('truetype');font-weight:400 900;font-display:swap}
+
+:root{--map-selection:#e7bb72;--map-measure:#e1ab62;--map-shared:#b28cff;--life:#38824c;--mana:#2383be}
+:root[data-style]{
+  --theme-header:#ce2e36;--theme-table-header:#cb2e36;--theme-header-border:#ab262d;--theme-header-text:#fff;--theme-header-hover:rgb(255 255 255 / .13);--theme-header-shadow:0 7px 18px rgb(121 35 37 / .18);
+  --theme-table-button:rgb(255 255 255 / .14);--theme-table-button-border:rgb(255 255 255 / .3);--theme-table-button-hover:rgb(255 255 255 / .25);
+  --theme-heading:#b8252e;--theme-section-heading:#b6252f;--theme-sheet-heading:#a6232d;--theme-field-label:#b52831;--theme-resource-heading:#9b2028;
+  --theme-hero-button:#fff;--theme-hero-button-text:#af242d;--theme-hero-primary:#ce3038;--theme-action:var(--accent);--theme-primary-hover:#ae242c;--theme-hover:#fff7f6;
+  --theme-card-radius:13px;--theme-summary-radius:14px;--theme-toolbar-radius:12px;--theme-hero-radius:16px;--theme-small-radius:7px;--theme-attribute-radius:0;
+  --theme-summary-shadow:0 6px 18px rgb(78 55 46 / .07);--theme-card-shadow:0 5px 16px rgb(80 52 40 / .07);--theme-dock-shadow:0 8px 20px rgb(70 42 36 / .14);
+  --theme-toolbar-border:#e5b7b8;--theme-toolbar-text:#b42831;--theme-skill-border:#e6dcda;--theme-skill-rule:#eadfdd;--theme-skill-alt:#f6f4f2;--theme-sheet-rule:#ebddda;
+  --theme-chat-bg:#faf8f6;--theme-roll-border:#e6b7b7;--theme-overlay-bg:#f7f4f1;--theme-overlay-border:#dcb8b6;--theme-mana-text:#08638f;--theme-map-label-text:#fff;
+}
+.summary-hero{display:none}
+.settings-section .theme-style-option{align-items:center;min-height:78px;cursor:pointer}
+.settings-section .theme-style-option.selected{border-color:var(--accent)!important;background:color-mix(in srgb,var(--surface) 90%,var(--accent))}
+.theme-style-option>span:last-child{flex:1}
+.theme-preview{display:grid!important;grid-template-columns:1.7fr .8fr;grid-template-rows:8px 1fr;gap:3px;flex:none;width:82px;height:52px;padding:4px;border:1px solid var(--border);border-radius:5px;background:#202124}
+.theme-preview i{display:block;min-width:0;min-height:0;border-radius:2px}
+.theme-preview i:first-child{grid-column:1/-1;grid-row:1;background:#252526}
+.theme-preview i:nth-child(2){grid-column:1;grid-row:2;background:#4d221c url('/themes/nimb/guilda-hero.png') center/cover}
+.theme-preview i:last-child{grid-column:2;grid-row:2;background:#1f1f1f}
+.theme-preview.modern{background:#181818;border-color:#505050;border-radius:8px}
+.theme-preview.modern i{border-radius:3px}.theme-preview.modern i:first-child{background:#252526}.theme-preview.modern i:last-child{background:#1f1f1f}
+.theme-preview.archaic{background:#0b0c0d;border-color:#98515a;border-radius:2px}.theme-preview.archaic i{border-radius:0}.theme-preview.archaic i:first-child{background:#1a1d20}.theme-preview.archaic i:last-child{background:#121416}
+.theme-preview.nimb{background:#f5f2f0;border-color:#d9c8c5}.theme-preview.nimb i:first-child{background:#d32d35}.theme-preview.nimb i:last-child{background:#fff}
+.mesa-session-actions{display:flex!important;align-items:center;justify-items:initial!important;gap:8px}
+:root :is(button,input,select,textarea):disabled{cursor:not-allowed}
+:root :is(input,select,textarea){caret-color:var(--accent)}
+:root ::selection{background:var(--accent);color:#fff}
+:root :focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+:root .mesa-tools,:root .mesa-map-zoom,:root .mesa-token-controls,:root .mesa-chat-log,:root .mesa-asset-placeholder{background-color:var(--surface)}
+:root .mesa-tools button.active{background:color-mix(in srgb,var(--surface2) 75%,var(--accent))}
+:root .mesa-board{background-color:#282924}
+:root .mesa-measure-label,:root .mesa-map-distance{color:var(--theme-map-label-text)}
+
+/* Moderno: a mesma composição, com superfícies escuras e cantos Windows. */
+:root[data-style="modern"]{
+  color-scheme:dark;--font-body:"Segoe UI Variable","Segoe UI",sans-serif;--font-display:"Segoe UI Variable","Segoe UI",sans-serif;--font-data:"Cascadia Mono",Consolas,monospace;
+  --bg:#181818;--surface:#1f1f1f;--surface2:#252526;--border:#373737;--text:#e8e8e8;--muted:#a7a7a7;--accent:#3996dd;--orange:var(--accent);--blue:#80bded;--danger:#f17676;--primary-bg:#007acc;--primary-text:#fff;--grid-line:transparent;--overlay:rgb(0 0 0 / .68);
+  --map-selection:#58b3f5;--map-measure:#f2bd6a;--map-shared:#bda0f7;
+  --life:#69c984;--mana:#69b9ef;--theme-mana-text:#69b9ef;
+  --theme-header:#252526;--theme-table-header:#252526;--theme-header-border:#373737;--theme-header-text:#e8e8e8;--theme-header-hover:rgb(255 255 255 / .09);--theme-header-shadow:0 7px 18px rgb(0 0 0 / .28);
+  --theme-table-button:rgb(255 255 255 / .09);--theme-table-button-border:rgb(255 255 255 / .24);--theme-table-button-hover:rgb(255 255 255 / .17);
+  --theme-heading:#80bded;--theme-section-heading:#80bded;--theme-sheet-heading:#80bded;--theme-field-label:#80bded;--theme-resource-heading:#80bded;
+  --theme-hero-button:#e8e8e8;--theme-hero-button-text:#181818;--theme-hero-primary:#007acc;--theme-action:#007acc;--theme-primary-hover:#006bb3;--theme-hover:#263845;
+  --theme-card-radius:11px;--theme-summary-radius:12px;--theme-toolbar-radius:10px;--theme-hero-radius:12px;--theme-small-radius:8px;--theme-attribute-radius:10px;
+  --theme-summary-shadow:0 6px 18px rgb(0 0 0 / .15);--theme-card-shadow:0 5px 16px rgb(0 0 0 / .18);--theme-dock-shadow:0 8px 20px rgb(0 0 0 / .28);
+  --theme-toolbar-border:#497ea1;--theme-toolbar-text:#80bded;--theme-skill-border:#454545;--theme-skill-rule:#3d3d3d;--theme-skill-alt:#252526;--theme-sheet-rule:#373737;
+  --theme-chat-bg:#1a1a1a;--theme-roll-border:#497ea1;--theme-overlay-bg:#252526;--theme-overlay-border:#454545;--theme-map-label-text:#111;
+}
+/* Arcaico mantém sua paleta claro/escuro; só a composição passa a ser comum. */
+:root[data-style="archaic"]{
+  --theme-header:var(--surface2);--theme-table-header:var(--surface2);--theme-header-border:var(--border);--theme-header-text:var(--text);--theme-header-hover:color-mix(in srgb,var(--surface2) 78%,var(--accent));--theme-header-shadow:0 7px 18px rgb(0 0 0 / .12);
+  --theme-table-button:color-mix(in srgb,var(--surface2) 82%,var(--accent));--theme-table-button-border:var(--border);--theme-table-button-hover:color-mix(in srgb,var(--surface2) 65%,var(--accent));
+  --theme-heading:var(--accent);--theme-section-heading:var(--accent);--theme-sheet-heading:var(--accent);--theme-field-label:var(--accent);--theme-resource-heading:var(--accent);
+  --theme-hero-button:var(--surface);--theme-hero-button-text:var(--text);--theme-hero-primary:var(--accent);--theme-action:var(--accent);--theme-primary-hover:color-mix(in srgb,var(--accent) 82%,var(--text));--theme-hover:color-mix(in srgb,var(--surface2) 85%,var(--accent));
+  --theme-card-radius:2px;--theme-summary-radius:2px;--theme-toolbar-radius:2px;--theme-hero-radius:2px;--theme-small-radius:2px;--theme-attribute-radius:0;
+  --theme-summary-shadow:0 6px 18px rgb(0 0 0 / .1);--theme-card-shadow:0 5px 16px rgb(0 0 0 / .12);--theme-dock-shadow:0 8px 20px rgb(0 0 0 / .24);
+  --theme-toolbar-border:var(--border);--theme-toolbar-text:var(--accent);--theme-skill-border:var(--border);--theme-skill-rule:var(--border);--theme-skill-alt:var(--surface2);--theme-sheet-rule:var(--border);
+  --theme-chat-bg:var(--surface2);--theme-roll-border:var(--border);--theme-overlay-bg:var(--surface2);--theme-overlay-border:var(--border);--theme-mana-text:var(--mana);--theme-map-label-text:#fff;
+}
+:root[data-style="archaic"][data-theme="dark"]{--life:#69c984;--mana:#69b9ef;--theme-action:#b72e38;--theme-map-label-text:#111}
+/* Nimb: fichário claro e carmesim, com arte própria da Guilda. */
+:root[data-style="nimb"]{
+  color-scheme:light;--font-body:Alegreya,Georgia,serif;--font-display:"Cinzel Decorative",Georgia,serif;--font-data:Alegreya,Georgia,serif;
+  --bg:#f2f0ee;--surface:#fff;--surface2:#f7f5f3;--border:#d9d3ce;--text:#281e1d;--muted:#665e5a;--accent:#c92d35;--orange:var(--accent);--blue:#a2222c;--danger:#b02730;--primary-bg:#cb2e36;--primary-text:#fff;--grid-line:transparent;--overlay:rgb(34 20 19 / .54);
+  --map-selection:#d32d35;--map-measure:#c28122;--map-shared:#5661bd;--life:#268341;--mana:#1587c9;
+}
+:root[data-style] .app-shell{background-image:none}
+:root[data-style] .app-header{width:min(1380px,calc(100% - 32px));height:74px;margin:16px auto 0;padding:0 22px;border:0;border-radius:var(--theme-card-radius);background:var(--theme-header);box-shadow:var(--theme-header-shadow)}
+:root[data-style] .brand,:root[data-style] .global-nav button,:root[data-style] .app-actions button{color:var(--theme-header-text)}
+:root[data-style] .brand strong{font:700 16px var(--font-display)}
+:root[data-style] .brand-sigil{transform:none;width:31px;height:31px;border-color:var(--theme-header-text);color:var(--theme-header-text);background:transparent}
+:root[data-style] .brand-sigil svg{transform:none}
+:root[data-style] .global-nav button{min-width:85px;font:700 12px var(--font-body)}
+:root[data-style] .global-nav button:hover,:root[data-style] .global-nav button.active{color:var(--theme-header-text);background:var(--theme-header-hover)}
+:root[data-style] .global-nav button.active:after{background:var(--theme-header-text)}
+:root[data-style] .hub{width:min(1380px,calc(100% - 32px));margin:28px auto 48px}
+:root[data-style] .hub-content{padding:0;border:0;background:transparent}
+:root[data-style] .hub-heading{margin-bottom:18px}
+:root[data-style] .hub-heading h1{font-size:22px;color:var(--theme-heading)}
+:root[data-style] .hub-content:has(>.summary-hero){display:grid;grid-template-columns:minmax(0,1.7fr) minmax(280px,.78fr);column-gap:22px;align-items:start}
+:root[data-style] .hub-content:has(>.summary-hero)>.hub-heading{grid-column:1/-1}
+:root[data-style] .summary-hero{grid-column:1;grid-row:2;display:flex;flex-direction:column;justify-content:center;min-height:345px;padding:40px 46px 86px;border-radius:var(--theme-hero-radius);background:#4d221c url('/themes/nimb/guilda-hero.png') center/cover no-repeat;color:#fff;text-shadow:0 2px 9px #150b09}
+:root[data-style] .summary-hero h2{max-width:560px;margin:0 0 10px;font:700 32px/1.28 var(--font-display)}
+:root[data-style] .summary-hero p{max-width:500px;margin:0;font:500 20px/1.3 var(--font-body)}
+:root[data-style] .hub-content:has(>.summary-hero)>.summary-actions{grid-column:1;grid-row:2;align-self:end;z-index:1;margin:0 0 28px 46px}
+:root[data-style] .summary-actions button{min-height:40px;border-radius:var(--theme-small-radius);background:var(--theme-hero-button);color:var(--theme-hero-button-text)}
+:root[data-style] .summary-actions .primary{background:var(--theme-hero-primary);color:#fff}
+:root[data-style] .hub-content:has(>.summary-hero)>.summary-section:nth-of-type(2){grid-column:1;grid-row:3}
+:root[data-style] .hub-content:has(>.summary-hero)>.summary-section:nth-of-type(3){grid-column:2;grid-row:2/span 2;margin-top:0}
+:root[data-style] .summary-section{padding:18px;background:var(--surface);border-radius:var(--theme-summary-radius);box-shadow:var(--theme-summary-shadow)}
+:root[data-style] .summary-section h2{font:700 17px var(--font-display);color:var(--theme-section-heading)}
+:root[data-style] .summary-list>button{border-radius:var(--theme-small-radius)}
+:root[data-style] .summary-list>button:hover{background:var(--theme-hover)}
+:root[data-style] :is(.frame,.character-card,.room-card,.mesa-card,.modal,.drawer.sheet-editor){border-radius:var(--theme-card-radius);clip-path:none;box-shadow:var(--theme-card-shadow)}
+:root[data-style] .card-icon,:root[data-style] .mesa-tabletop-mark{transform:none;border-radius:var(--theme-small-radius);background:var(--accent);color:#fff;border:0}
+:root[data-style] .card-icon svg,:root[data-style] .mesa-tabletop-mark svg{transform:none}
+:root[data-style] .primary,:root[data-style] .sheet-toolbar .primary,:root[data-style] .mesa-card button.primary,:root[data-style] .mesa-tabletop button.primary,:root[data-style] .mesa-session-head .primary{background:var(--theme-action);border-color:var(--theme-action);color:#fff}
+:root[data-style] .primary:hover,:root[data-style] .sheet-toolbar .primary:hover{background:var(--theme-primary-hover);color:#fff}
+:root[data-style] .sheet-toolbar{width:min(1420px,calc(100% - 30px));margin:18px auto 0;padding:9px 14px;border-radius:var(--theme-toolbar-radius);background:var(--surface);box-shadow:var(--theme-card-shadow)}
+:root[data-style] .sheet-toolbar button:not(.primary){border-color:var(--theme-toolbar-border);color:var(--theme-toolbar-text);border-radius:var(--theme-small-radius)}
+:root[data-style] .sheet{width:min(1420px,calc(100% - 30px));grid-template-columns:minmax(0,1.55fr) minmax(320px,.9fr);gap:15px;margin:18px auto 50px}
+:root[data-style] .identity{grid-column:1;grid-row:1;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;padding:20px 22px}
+:root[data-style] .identity .name-field{grid-column:span 2}
+:root[data-style] .name-field input{font:700 24px var(--font-body)}
+:root[data-style] .identity label{font:700 11px var(--font-body);color:var(--theme-field-label);text-transform:none}
+:root[data-style] .identity input,:root[data-style] .identity select{font-size:15px;color:var(--text)}
+:root[data-style] .resources{grid-column:1;grid-row:2;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+:root[data-style] .resources .resource{display:grid;grid-template-columns:minmax(0,1fr) 96px;grid-template-rows:auto auto auto;gap:5px 10px;align-items:center;min-height:160px;padding:13px 18px}
+:root[data-style] .resources .resource h2{grid-column:1/-1;font:700 14px var(--font-display);color:var(--theme-resource-heading)}
+:root[data-style] .resources .resource label{font:700 11px var(--font-body)}
+:root[data-style] .resources .resource label:nth-of-type(2){grid-column:2;grid-row:2/4;display:grid;place-content:center;justify-items:center;width:94px;height:94px;border:7px solid var(--life);border-radius:50%;color:var(--life)}
+:root[data-style] .resources .resource:nth-child(2) label:nth-of-type(2){border-color:var(--mana);color:var(--theme-mana-text)}
+:root[data-style] .resources .resource label:nth-of-type(2) input{width:65px;border:0;text-align:center;font:700 28px var(--font-body);color:inherit}
+:root[data-style] .resource-stat{min-height:96px}
+:root[data-style] .attributes{grid-column:1;grid-row:3;padding:0 12px 14px}
+:root[data-style] .attributes>header{justify-content:center;background:transparent;border-bottom:0;min-height:62px}
+:root[data-style] .attributes>header h2,:root[data-style] .skills-panel h2,:root[data-style] .sheet-panel>header h2{font:700 17px var(--font-display);color:var(--theme-sheet-heading)}
+:root[data-style] .attributes-grid{gap:8px}
+:root[data-style] .attribute{min-height:146px}
+:root[data-style] .attribute-hex{width:110px;height:110px;clip-path:none;border:1px solid var(--border);border-radius:var(--theme-attribute-radius);background:var(--surface2);color:var(--accent)}
+:root[data-style] .attribute-hex span{font:700 11px var(--font-display)}
+:root[data-style] .attribute-hex strong{font:700 30px var(--font-body)}
+:root[data-style] .attribute label{font:700 11px var(--font-body);color:var(--muted)}
+:root[data-style] .conditions-panel{grid-column:1;grid-row:4}
+:root[data-style] .sheet-columns{display:contents}
+:root[data-style] .sheet-main{grid-column:1;grid-row:5;gap:14px}
+:root[data-style] .sheet-side{grid-column:2;grid-row:1/span 6;gap:14px}
+:root[data-style] .skills-panel{padding:14px}
+:root[data-style] .skills-grid{max-height:none;gap:0;border:1px solid var(--theme-skill-border)}
+:root[data-style] .skill-row{min-height:35px;border-bottom:1px solid var(--theme-skill-rule);background:var(--surface);font:500 13px var(--font-body)}
+:root[data-style] .skill-row:nth-child(even){background:var(--theme-skill-alt)}
+:root[data-style] .skill-row strong{font-size:14px}
+:root[data-style] .sheet-panel>header{background:var(--surface);border-bottom:1px solid var(--theme-sheet-rule)}
+:root[data-style] .sheet-panel>header h2 svg{color:var(--accent)}
+:root[data-style] .mesa-tabletop-head{background:var(--theme-table-header);border-color:var(--theme-header-border);color:var(--theme-header-text)}
+:root[data-style] .mesa-tabletop-head :is(strong,small,.mesa-back){color:var(--theme-header-text)}
+:root[data-style] .mesa-tabletop-head button{background:var(--theme-table-button);border-color:var(--theme-table-button-border);color:var(--theme-header-text)}
+:root[data-style] .mesa-tabletop-head button:hover{background:var(--theme-table-button-hover);border-color:var(--theme-header-text)}
+:root[data-style] .mesa-tabletop-mark{background:var(--theme-table-button)}
+:root[data-style] .mesa-tools,:root[data-style] .mesa-dock-panel,:root[data-style] .mesa-side{background:var(--surface);box-shadow:var(--theme-dock-shadow)}
+:root[data-style] .mesa-tools button.active{color:var(--accent);background:var(--theme-hover)}
+:root[data-style] .mesa-chat-log{background:var(--theme-chat-bg)}
+:root[data-style] .mesa-chat-log .mesa-roll-card{background:var(--surface);border-color:var(--theme-roll-border);border-radius:var(--theme-small-radius)}
+:root[data-style] .mesa-config-overlay{background:var(--theme-overlay-bg);border-color:var(--theme-overlay-border)}
+:root[data-style] .mesa-master-tabs button.active{color:var(--theme-primary-hover)}
+:root[data-style="nimb"] .attribute-hex{border:0;background:transparent url('/themes/nimb/attribute-frame.svg') center/contain no-repeat;color:#c92d35}
+:root[data-style="archaic"] .attribute-hex{clip-path:polygon(8px 0,calc(100% - 8px) 0,100% 8px,100% calc(100% - 8px),calc(100% - 8px) 100%,8px 100%,0 calc(100% - 8px),0 8px)}
+:root:is([data-style="modern"],[data-style="archaic"]) .summary-hero{background-image:linear-gradient(90deg,rgb(6 10 15 / .44),rgb(6 10 15 / .18)),url('/themes/nimb/guilda-hero.png')}
+
+@media(max-width:1500px){
+  :root[data-style] .app-shell.with-compendium .sheet{display:block}
+  :root[data-style] .app-shell.with-compendium .sheet>*{margin-bottom:14px}
+  :root[data-style] .app-shell.with-compendium .sheet-columns{display:grid;grid-template-columns:1fr}
+  :root[data-style] .app-shell.with-compendium :is(.sheet-main,.sheet-side){grid-column:1;grid-row:auto}
+  :root[data-style] .app-shell.with-compendium .attributes-grid{grid-template-columns:repeat(3,1fr)}
+}
+@media(max-width:1100px){
+  :root[data-style] .hub-content:has(>.summary-hero){grid-template-columns:1fr}
+  :root[data-style] .hub-content:has(>.summary-hero)>.summary-section:nth-of-type(2),:root[data-style] .hub-content:has(>.summary-hero)>.summary-section:nth-of-type(3){grid-column:1;grid-row:auto;margin-top:16px}
+  :root[data-style] .sheet{grid-template-columns:minmax(0,1fr) minmax(290px,.8fr)}
+  :root[data-style] .attributes-grid{grid-template-columns:repeat(3,1fr)}
+}
+@media(max-width:900px){
+  :root[data-style] .sheet{display:block}
+  :root[data-style] .sheet>*{margin-bottom:14px}
+  :root[data-style] .sheet-columns{display:grid;grid-template-columns:1fr}
+  :root[data-style] .sheet-main,:root[data-style] .sheet-side{grid-column:1;grid-row:auto}
+}
+@media(max-width:760px){
+  :root[data-style] .app-header{width:calc(100% - 16px);height:64px;margin-top:8px;padding-inline:8px}
+  :root[data-style] .brand strong{display:none}
+  :root[data-style] .global-nav button{min-width:0;padding-inline:5px;font-size:11px}
+  :root[data-style] .hub{width:calc(100% - 20px)}
+  :root[data-style] .summary-hero{min-height:280px;padding:28px 24px 86px}
+  :root[data-style] .summary-hero h2{font-size:24px}
+  :root[data-style] .hub-content:has(>.summary-hero)>.summary-actions{margin:0 0 20px 24px}
+  :root[data-style] .identity{grid-template-columns:repeat(2,minmax(0,1fr))}
+  :root[data-style] .resources{grid-template-columns:repeat(2,minmax(0,1fr))}
+  :root[data-style] .resources .resource{grid-template-columns:1fr;min-height:0}
+  :root[data-style] .resources .resource label:nth-of-type(2){grid-column:1;grid-row:auto}
+  :root[data-style] .attributes-grid{grid-template-columns:repeat(3,1fr)}
+}
+@media(max-width:520px){
+  :root[data-style] .global-nav button{font-size:0}
+  :root[data-style] .global-nav svg{width:18px;height:18px}
+  :root[data-style] .summary-hero{padding:22px 18px 88px}
+  :root[data-style] .summary-hero h2{font-size:19px}
+  :root[data-style] .summary-hero p{font-size:15px}
+  :root[data-style] .hub-content:has(>.summary-hero)>.summary-actions{margin-left:18px}
+  :root[data-style] .resources{grid-template-columns:1fr}
+  :root[data-style] .attributes-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(prefers-reduced-motion:reduce){
+  :root .theme-style-option,:root .summary-list>button{transition:none!important}
+}

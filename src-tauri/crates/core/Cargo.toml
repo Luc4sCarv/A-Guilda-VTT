@@ -1,0 +1,8 @@
+[package]
+name = "tormenta20-core"
+version = "0.1.0"
+edition = "2024"
+
+[lib]
+path = "src/lib.rs"
+
